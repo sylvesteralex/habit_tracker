@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section>
+        <form class="form" method="POST">
+            <fieldset>
+            <label class="form__label" for="addHabit">Name your new habit</label>
+            <textarea class="form__textarea" name="habitName" placeholder="30mins excercising"></textarea>
+            <button class="form__button" type="submit">Add a habit</button>
+            </fieldset>
+        </form>
+    </section>
+{% endblock%}

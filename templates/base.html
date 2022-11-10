@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{{ title }}</title>
+     <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- FONTS -->
+<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">-->
+    <!-- STYLES -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='/style.css') }}">
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <!-- Milligram CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+    {% block head_content %}
+    {% endblock %}
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="column column-50 column-offset-25">
+                    <a class="header__link" href="{{ url_for('habits.home') }}"><img class="header__logo" src="{{ url_for('static', filename='/habit_tracker_logo.svg') }}" alt="logo" width=50px></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column column-50 column-offset-25">
+                    <h1>Habit tracker</h1>
+                    {% if "add" not in request.endpoint %}
+                        <a class="header__link" href="{{ url_for('habits.add_habit') }}">Add a habit +</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+        {% block main_content %}
+        {% endblock %}
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="row">
+            <div class="column">
+                <p><strong>2022</strong></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+body {
+    box-sizing: border-box;
+    /* font-family: 'Poppins', sans-serif; */
+}
+
+.header, .main, .footer {
+    width: 48rem;
+    margin: auto;
+    text-align: center;
+}
+
+.header {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    margin-top: 4rem;
+    padding-bottom: 3rem;
+    border-radius: 10px 10px 0 0;
+}
+
+.header__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header__logo {
+    margin-top: -10%;
+}
+
+.form__textarea {
+    resize: none;
+}
+
+.dates .row {
+    justify-content: space-evenly;
+}
+.column.date {
+    flex: 1 1 0;
+    width: 0;
+}
+
+.date__link {
+    color: inherit;
+}
+
+.date--current {
+    background-color: #000;
+    color: #fff;
+}
+
+article {
+    padding: 2rem;
+}
+
+footer {
+    background-color: #e3e3e3;
+    border-radius: 0 0 10px 10px;
+}
+
+.row.habit {
+    padding-top: 2rem;
+}
+
+footer p {
+    margin: auto;
+    padding: 1rem;
+}

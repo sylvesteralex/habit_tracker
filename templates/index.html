@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <article class="dates">
+        <div class="row">
+            {% for date in dates(selected_date) %}
+                <div class="column date {{ 'date--current' if loop.index0 == 3 else '' }}">
+                    <a
+                    class="date__link"
+                    href="{{ url_for('habits.home', date=date) }}"
+                    >
+                    <time class="date" datetime="{{ date }}">
+                        <span class="">{{ date.strftime("%a") }}</span>
+                        <span class="">{{ date.strftime("%d") }}</span>
+                    </time>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </article>
+
+    <article class="habit__list">
+
+        {% for habit in habits %}
+            {% set completed = habit["_id"] in completions %}
+                    {% if completed %}
+                        <div class="row habit habit--completed">
+                            <div class="column habit__name">{{ habit["name"] }}</div>
+                            <div class="column">completed! <span>✔️</span></div>
+                        </div>
+                    {% elif selected_date != today %}
+                        <div class="row habit">
+                            <div class="column habit__name"><mark>I will:</mark> {{ habit["name"] }}</div>
+                        </div>
+                    {% else %}
+                        <div class="row habit">
+                            <div class="column">
+                                <form method="POST" class="column habit__form" action="{{ url_for('habits.complete') }}">
+                                    <input type="hidden" name="habitId" value="{{ habit['_id'] }}" />
+                                    <input type="hidden" name="date" value="{{ selected_date }}" />
+                                    <button type="submit" class="button habit_button">Mark {{ habit["name"] }} as done</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endif %}
+
+        {% endfor %}
+
+    </article>
+
+{% endblock%}
